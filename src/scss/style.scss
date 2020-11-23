@@ -1,0 +1,359 @@
+@import 'fonts.scss';
+@import 'vars.scss';
+@import 'swiper.scss';
+
+
+body{
+  background: #4F73CD;
+  font-family: 'Golos Text';
+  font-weight: normal;
+  font-size: 16px;
+  color: #fff;
+}
+
+.content{
+  margin: 0 auto;
+  width: 100%;
+  max-width: $lg;
+  padding: 44px 130px 0 140px;
+
+  &__filter{
+    margin-top: 1.05em;
+    margin-bottom: 0.55em;
+    @media (max-width: $lg) {
+      margin-bottom: 0;
+    }
+  }
+  &__swiper{
+    position: relative;
+  }
+
+  @media (max-width: $lg) {
+    max-width: $md;
+    padding: 2.25em 2.5em 4em 2.5em;
+  }
+  @media (max-width: $md) {
+    max-width: 100%;
+    padding: 2.25em 20px 4em;
+  }
+}
+
+.title{
+  font-weight: 600;
+  font-size: 2.25em;
+  line-height: 1.47;
+  @media (max-width: $md) {
+    font-size: 1.875em;
+  }
+}
+
+.filter{
+
+  @media (max-width: $md) {
+    max-height: 30px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1.5em;
+    transition: max-height 0.5s ease;
+    &-open{
+      max-height: 300px;
+    }
+    &-open &__arrow{
+      transform: rotate(180deg);
+    }
+  }
+  &__arrow{
+    transition: transform .5s ease;
+  }
+  &__title{
+    display: none;
+    @media (max-width: $md) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1em;
+      position: relative;
+      z-index: 3;
+    }
+  }
+  &__list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    @media (max-width: $md) {
+      position: relative;
+      z-index: 1;
+      padding: 10px 0!important;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      background: #254595;
+      border-radius: 0 0 8px 8px;
+    }
+  }
+  &__item{
+    display: block;
+    margin-bottom: 0.4em;
+    margin-right: 0.5em; /*Для Pixel Perfext 35px*/
+    @media (max-width: $md) {
+      display: block;
+      width: 100%;
+      margin: 0;
+    }
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+  &__link{
+    font-weight: 500;
+    line-height: 1.25;
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+    padding: 0.5em 1.25em; /*Для Pixel Perfext перенести в :hover и &-active*/
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    text-align: left;
+    @media (max-width: $md) {
+      display: block;
+      width: 100%;
+      padding: 6px 40px;
+      border-radius: 0;
+    }
+    
+    &:hover{
+      background: #A5BEFF;
+    }
+    &-active{
+      background: #80A0F2;
+      @media (max-width: $md) {
+        position: relative;
+        background: #3259B9;
+        &::before{
+          content: '\2713';
+          position: absolute;
+          border-radius: 1px;
+          font-size: 12px;
+          top: 10px;
+          left: 15px;
+          transform-origin: center;
+        }
+      }
+    }
+  }
+}
+
+
+.card{
+
+  width: $w_lg;
+  height: 250px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-top: 0!important;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  
+  @media (max-width: $lg) {
+    width: $w_md;
+    height: 317px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: $md) {
+    width: 100%;
+    height: 63vw;
+  }
+
+  &__container{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow .5s ease .2s;
+  }
+
+  &__img_block{
+    position: relative;
+    z-index: 2;
+    @media (max-width: $md) {
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+  &__img{
+    width: $w_lg;
+    @media (max-width: $lg) {
+      width: $w_md;
+    }
+    @media (max-width: $md) {
+      width: 100%;
+    }
+  }
+  &__title{
+    position: absolute;
+    bottom: 0.85em;
+    left: 0.75em;
+    font-weight: 500;
+    @media (max-width: $lg) {
+      left: 0.85em;
+      bottom: 0.9em;
+    }
+  }
+  &__subtitle{
+    font-weight: normal;
+    display: block;
+  }
+  &__content{
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    transform: translateX(-100%);
+    background: #254595;
+    padding: 1.625em 1.625em 1.25em 2.5em;
+    height: 100%;
+    transition: transform .7s ease-in-out;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (max-width: $md){
+      transform: translateY(-75%);
+    }
+  }
+
+  @media (min-width: $lg){
+    &:hover &__container{
+      width: calc(300% + 60px);
+      z-index: 5;
+      box-shadow: 0px 0px 1em rgba(0, 0, 0, 0.4);
+    }
+    &:hover &__content{
+      z-index: 2;
+      transform: translateX(0);
+      box-shadow: 0px 0px 1em rgba(0, 0, 0, 0.4);
+      width: calc(100% - #{$w_lg} + 10px);
+    }
+    &:hover &__img_block{
+      z-index: 3;
+    }
+    &-reverse:hover &__container{
+      flex-direction: row-reverse;
+      transform: translateX(calc(-100% + #{$w_lg}));
+    }
+    &-reverse &__content{
+      left: 0;
+      right: inherit;
+      transform: translateX(100%);
+      border-radius: 8px 0 0 8px;
+      padding: 1.625em 2em 1.3em 1.8em;
+    }
+    &-reverse:hover &__content{
+      position: absolute;
+      transform: translateX(0);
+      z-index: 2;
+    }
+  }
+  @media (max-width: $lg){
+    &-show{
+      z-index: 5;
+      position: static;
+    }
+    &-show &__container{
+      z-index: 2;
+      width: calc(#{$w_md}*3+40px);
+      box-shadow: none;
+      top: inherit;
+    }
+    &-show &__content{
+      z-index: 2;
+      transform: translateX(0);
+      width: calc(100% - 200px);
+    }
+    &-show &__img_block{
+      z-index: 3;
+    }
+  }
+  @media (max-width: $md){
+    &-show &__container{
+      top: 0;
+      z-index: 5;
+      flex-direction: column;
+      width: calc(100vw - 40px);
+      height: 95%;
+    }
+    &-show &__content{
+      position: relative;
+      right: inherit;
+      z-index: 2;
+      transform: translateX(0);
+      width: 100%;
+    }
+  }
+
+
+  &__text{
+    line-height: 1.4;
+  }
+  &__button{
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px 20px 16px;
+    line-height: 1;
+    border: 2px solid #FFFFFF;
+    border-radius: 0.5em;
+    color: #fff;
+    font-weight: 700;
+    width: 132px;
+    transition: all 0.5s ease;
+    &:focus,
+    &:active,
+    &:hover{
+      border-color: #0047FE;
+      background: #0047FE;
+    }
+  }
+  
+  &__close{
+    position: absolute;
+    top: 1.5em;
+    right: 1em;
+    width: 10px;
+    height: 10px;
+    background-size: contain;
+    display: none;
+    &::before,
+    &::after{
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      background: #fff;
+      transform-origin: center;
+    }
+    &::before{
+      transform: rotate(45deg);
+    }
+    &::after{
+      transform: rotate(-45deg);
+    }
+
+
+    @media (max-width: $lg){
+      display: block;
+    }
+    @media (max-width: $md) {
+      top: 1.25em;
+      right: 1.25em;
+    }
+  }
+
+}
