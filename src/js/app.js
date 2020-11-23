@@ -92,6 +92,9 @@ const setReverseCards = () => {
 }
 swiper.on('slideChange', setReverseCards);
 
+// скрытие карточки на мобильных устройствах при скролле слайдера
+swiper.on('slideChange', () => (screenWidth < 1440 && document.querySelector('.card-show'))?clearCardShow(document.querySelector('.card-show')):null);
+
 // функция очистки демонстрации слайда на планшете/смартфоне
 const clearCardShow = (item) => {
   item.classList.remove('card-show');
